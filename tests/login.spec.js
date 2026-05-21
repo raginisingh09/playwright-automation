@@ -1,78 +1,59 @@
-import { test, expect } from '@playwright/test';
+import { test } from '@playwright/test';
 
-test('OTP Login Flow', async ({ page }) => {
+import { LoginPage } from '../pages/LoginPage';
 
-  // Open Website
-  await page.goto('https://flyingflea.royalenfield.com/in/en/product/c6/');
+import { USERS } from '../test-data/loginData';
 
-  // Open Login Popup
-  await page.locator('.header-profile').first().click();
+test.describe.configure({ mode: 'serial' });
 
-  // Enter Mobile Number
-  await page.getByRole('textbox', {
-    name: 'Mobile Number* Mobile Number*'
-  }).fill('9569736649');
+test.describe('OTP Login Flow', () => {
 
-  // Accept Terms Checkbox
-  await page.locator('input[type="checkbox"]').check();
+  let page;
+  let loginPage;
 
-  // Wait Before Continue
-  await page.waitForTimeout(2000);
+  test.beforeAll(async ({ browser }) => {
 
-  // Capture OTP Trigger API
-  const sendOtpResponsePromise = page.waitForResponse(
-    response =>
-      response.url().includes('send') &&
-      response.status() === 200
-  );
+    page = await browser.newPage();
 
-  // Click Continue
-  await page.getByRole('button', {
-    name: 'Continue'
-  }).click();
+    loginPage = new LoginPage(page);
 
-  // Wait For OTP API Response
-  const sendOtpResponse = await sendOtpResponsePromise;
+  });
 
-  // Convert Response To JSON
-  const sendOtpBody = await sendOtpResponse.json();
+  test.afterAll(async () => {
 
-  console.log('Send OTP API Response:', sendOtpBody);
+    await page.close();
 
-  // Validate OTP Screen Visible
-  await expect(page.getByText('ENTER OTP')).toBeVisible();
+  });
 
-  // OTP
-  const otp = '184906';
+  test('Login with OTP', async () => {
 
-  // Fill OTP Boxes
-  for (let i = 0; i < otp.length; i++) {
-    await page.getByRole('textbox', { name: '-' })
-      .nth(i)
-      .fill(otp[i]);
-  }
+    // Open Website
+    await loginPage.navigate();
 
-  // Capture Verify OTP API
-  const verifyOtpResponsePromise = page.waitForResponse(
-    response =>
-      response.url().includes('verify') &&
-      response.status() === 200
-  );
+    // Open Login Popup
+    await loginPage.openLoginPopup();
 
-  // Click Verify
-  await page.getByRole('button', {
-    name: 'Verify'
-  }).click();
+    // Enter Mobile Number
+    await loginPage.enterMobileNumber(
+      USERS.registeredUser.mobile
+    );
 
-  // Wait For Verify OTP API Response
-  const verifyOtpResponse = await verifyOtpResponsePromise;
+    // Accept Terms
+    await loginPage.acceptTerms();
 
-  // Convert Verify Response To JSON
-  const verifyOtpBody = await verifyOtpResponse.json();
+    // Continue
+    await loginPage.clickContinue();
 
-  console.log('Verify OTP API Response:', verifyOtpBody);
+    // Validate OTP Screen
+    await loginPage.validateOtpScreen();
 
-  // Final Validation
-  await expect(page).toHaveURL(/profile|home|dashboard/);
+    // Enter OTP
+    await loginPage.enterOTP(
+      USERS.registeredUser.otp
+    );
 
+    // Verify OTP
+    await loginPage.clickVerify();
+
+  });
 });

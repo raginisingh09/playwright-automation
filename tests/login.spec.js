@@ -8,24 +8,11 @@ test.describe.configure({ mode: 'serial' });
 
 test.describe('OTP Login Flow', () => {
 
-  let page;
-  let loginPage;
+  test.setTimeout(0);
 
-  test.beforeAll(async ({ browser }) => {
+  test('Login with OTP', async ({ page }) => {
 
-    page = await browser.newPage();
-
-    loginPage = new LoginPage(page);
-
-  });
-
-  test.afterAll(async () => {
-
-    await page.close();
-
-  });
-
-  test('Login with OTP', async () => {
+    const loginPage = new LoginPage(page);
 
     // Open Website
     await loginPage.navigate();
@@ -47,10 +34,8 @@ test.describe('OTP Login Flow', () => {
     // Validate OTP Screen
     await loginPage.validateOtpScreen();
 
-    // Enter OTP
-    await loginPage.enterOTP(
-      USERS.registeredUser.otp
-    );
+    // Enter OTP manually in the headed browser.
+    await loginPage.waitForManualOtpEntry();
 
     // Verify OTP
     await loginPage.clickVerify();

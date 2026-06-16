@@ -132,10 +132,7 @@ export class LoginPage {
       timeout: 10000
     });
 
-    await this.termsText.click({
-      force: true
-    });
-
+    await this.termsText.click({ position: { x: 5, y: 5 } });
     await expect(this.checkbox).toBeChecked();
 
     console.log('Terms checkbox selected');
@@ -146,6 +143,50 @@ export class LoginPage {
     await this.continueBtn.click();
 
     console.log('Continue button clicked');
+
+    const authFlow = await this.detectAuthFlow();
+
+    expect(
+      authFlow,
+      'Expected a registered mobile number to open the login OTP flow, but the signup form opened.'
+    ).toBe('login');
+  }
+
+  async detectAuthFlow() {
+
+    const signupForm = this.page.locator('#signupForm');
+    const otpInputs = this.page.getByRole('textbox', {
+      name: '-'
+    });
+
+    await expect
+      .poll(
+        async () => {
+          if (await signupForm.isVisible().catch(() => false)) {
+            return 'signup';
+          }
+
+          if (
+            await otpInputs.count() === 6 &&
+            await otpInputs.first().isVisible().catch(() => false)
+          ) {
+            return 'login';
+          }
+
+          return null;
+        },
+        {
+          message: 'Waiting for login or signup flow after mobile submission',
+          timeout: 20000
+        }
+      )
+      .not.toBeNull();
+
+    if (await signupForm.isVisible().catch(() => false)) {
+      return 'signup';
+    }
+
+    return 'login';
   }
 
   async validateOtpScreen() {

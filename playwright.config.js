@@ -36,17 +36,49 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
+      name: 'signup-account-check',
+      testMatch: '**/accountCheck.setup.js',
+      use: { ...devices['Desktop Chrome'] },
+    },
+    {
+      name: 'signup-account-delete',
+      testMatch: '**/deleteAccount.setup.js',
+      dependencies: ['signup-account-check'],
+      use: { ...devices['Desktop Chrome'] },
+    },
+    {
+      name: 'signup-chromium',
+      testMatch: '**/signup.spec.js',
+      dependencies: ['signup-account-delete'],
+      use: { ...devices['Desktop Chrome'] },
+    },
+    {
       name: 'chromium',
+      testIgnore: [
+        '**/accountCheck.setup.js',
+        '**/deleteAccount.setup.js',
+        '**/signup.spec.js'
+      ],
       use: { ...devices['Desktop Chrome'] },
     },
 
     {
       name: 'firefox',
+      testIgnore: [
+        '**/accountCheck.setup.js',
+        '**/deleteAccount.setup.js',
+        '**/signup.spec.js'
+      ],
       use: { ...devices['Desktop Firefox'] },
     },
 
     {
       name: 'webkit',
+      testIgnore: [
+        '**/accountCheck.setup.js',
+        '**/deleteAccount.setup.js',
+        '**/signup.spec.js'
+      ],
       use: { ...devices['Desktop Safari'] },
     },
 

@@ -49,4 +49,18 @@ copilot-messages.log
 
 # System files
 .DS_Store
-.project/attachments/files/**
+.project/attachments/files/**# Dependencies
+node_modules/
+
+# Playwright
+playwright-report/
+test-results/
+
+# Environment files
+.env
+.env.*
+
+# OS files
+.DS_Store
+Thumbs.db
+

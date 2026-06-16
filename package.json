@@ -7,9 +7,12 @@
     "test": "playwright test",
     "login": "playwright test tests/login.spec.js",
     "join": "playwright test tests/joinTheRide.spec.js",
+    "signup-prepare-headed": "playwright test --project=signup-account-delete --headed",
+    "signup": "playwright test --project=signup-chromium",
     "headed": "playwright test --headed",
     "login-headed": "playwright test tests/login.spec.js --headed",
     "join-headed": "playwright test tests/joinTheRide.spec.js --headed",
+    "signup-headed": "playwright test --project=signup-chromium --headed",
     "report": "playwright show-report"
   },
   "keywords": [],

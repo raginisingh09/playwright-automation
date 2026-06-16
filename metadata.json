@@ -1,0 +1,183 @@
+{
+    "format": "scripture burrito",
+    "projectName": "Playwright-Automation",
+    "projectId": "442nw6vjcyz4n3adrh7g5g",
+    "meta": {
+        "version": "0.0.0",
+        "category": "Translation",
+        "generator": {
+            "softwareName": "Codex Editor",
+            "softwareVersion": "0.27.0",
+            "userName": "",
+            "userEmail": ""
+        },
+        "defaultLocale": "en",
+        "dateCreated": "Fri May 22 2026",
+        "normalization": "NFC",
+        "comments": [],
+        "requiredExtensions": {
+            "codexEditor": "0.27.0",
+            "frontierAuthentication": "0.6.0"
+        },
+        "validationCount": 1,
+        "validationCountAudio": 1,
+        "abbreviation": ""
+    },
+    "idAuthorities": {},
+    "identification": {},
+    "languages": [
+        {
+            "name": {
+                "en": "English"
+            },
+            "tag": "eng",
+            "refName": "English",
+            "projectStatus": "source"
+        },
+        {
+            "name": {
+                "en": "English"
+            },
+            "tag": "eng",
+            "refName": "English",
+            "projectStatus": "target"
+        }
+    ],
+    "type": {
+        "flavorType": {
+            "name": "default",
+            "flavor": {
+                "name": "default",
+                "usfmVersion": "3.0",
+                "translationType": "unknown",
+                "audience": "general",
+                "projectType": "unknown"
+            },
+            "currentScope": {
+                "GEN": [],
+                "EXO": [],
+                "LEV": [],
+                "NUM": [],
+                "DEU": [],
+                "JOS": [],
+                "JDG": [],
+                "RUT": [],
+                "1SA": [],
+                "2SA": [],
+                "1KI": [],
+                "2KI": [],
+                "1CH": [],
+                "2CH": [],
+                "EZR": [],
+                "NEH": [],
+                "EST": [],
+                "JOB": [],
+                "PSA": [],
+                "PRO": [],
+                "ECC": [],
+                "SNG": [],
+                "ISA": [],
+                "JER": [],
+                "LAM": [],
+                "EZK": [],
+                "DAN": [],
+                "HOS": [],
+                "JOL": [],
+                "AMO": [],
+                "OBA": [],
+                "JON": [],
+                "MIC": [],
+                "NAM": [],
+                "HAB": [],
+                "ZEP": [],
+                "HAG": [],
+                "ZEC": [],
+                "MAL": [],
+                "MAT": [],
+                "MRK": [],
+                "LUK": [],
+                "JHN": [],
+                "ACT": [],
+                "ROM": [],
+                "1CO": [],
+                "2CO": [],
+                "GAL": [],
+                "EPH": [],
+                "PHP": [],
+                "COL": [],
+                "1TH": [],
+                "2TH": [],
+                "1TI": [],
+                "2TI": [],
+                "TIT": [],
+                "PHM": [],
+                "HEB": [],
+                "JAS": [],
+                "1PE": [],
+                "2PE": [],
+                "1JN": [],
+                "2JN": [],
+                "3JN": [],
+                "JUD": [],
+                "REV": []
+            }
+        }
+    },
+    "confidential": false,
+    "agencies": [],
+    "targetAreas": [],
+    "localizedNames": {},
+    "ingredients": {},
+    "copyright": {
+        "shortStatements": []
+    },
+    "edits": [
+        {
+            "editMap": [
+                "meta",
+                "validationCount"
+            ],
+            "value": 1,
+            "timestamp": 1779454395580,
+            "type": "user-edit",
+            "author": "raginisingh09"
+        },
+        {
+            "editMap": [
+                "meta",
+                "validationCountAudio"
+            ],
+            "value": 1,
+            "timestamp": 1779454395581,
+            "type": "user-edit",
+            "author": "raginisingh09"
+        },
+        {
+            "editMap": [
+                "meta",
+                "abbreviation"
+            ],
+            "value": "",
+            "timestamp": 1779454395581,
+            "type": "user-edit",
+            "author": "raginisingh09"
+        },
+        {
+            "editMap": [
+                "chatSystemMessage"
+            ],
+            "value": "When translating from English to English (whether across dialects, registers, or time periods), maintain careful attention to lexicosemantic distinctions including polysemy resolution, collocational appropriateness, and connotative load; preserve information structure by retaining topic-comment articulation, given-new ordering, and thematic progression while adjusting for register-specific conventions; recognize that grammatical naturalness requires dialect-appropriate morphosyntax (such as collective noun agreement, gotten/got distinctions, or progressive aspect constraints), idiomatic recalibration rather than literal retention when crossing registers or varieties, and appropriate modality marking; ensure register consistency by aligning formality levels, technicality, and stance markers (hedges, boosters, attitude markers) with target context expectations; attend to cohesive devices including reference chains, substitution patterns, and conjunctive relations that may require adjustment even when lexically similar forms exist; respect pragmatic factors including politeness strategies, implicature preservation, and speech act appropriateness that vary across English varieties; and remain alert to false friends within English itself—words or constructions that appear identical but carry different meanings, frequencies, or appropriateness conditions across dialects, historical periods, or specialized discourse communities.",
+            "timestamp": 1779454408672,
+            "type": "user-edit",
+            "author": "raginisingh09"
+        }
+    ],
+    "chatSystemMessage": "When translating from English to English (whether across dialects, registers, or time periods), maintain careful attention to lexicosemantic distinctions including polysemy resolution, collocational appropriateness, and connotative load; preserve information structure by retaining topic-comment articulation, given-new ordering, and thematic progression while adjusting for register-specific conventions; recognize that grammatical naturalness requires dialect-appropriate morphosyntax (such as collective noun agreement, gotten/got distinctions, or progressive aspect constraints), idiomatic recalibration rather than literal retention when crossing registers or varieties, and appropriate modality marking; ensure register consistency by aligning formality levels, technicality, and stance markers (hedges, boosters, attitude markers) with target context expectations; attend to cohesive devices including reference chains, substitution patterns, and conjunctive relations that may require adjustment even when lexically similar forms exist; respect pragmatic factors including politeness strategies, implicature preservation, and speech act appropriateness that vary across English varieties; and remain alert to false friends within English itself—words or constructions that appear identical but carry different meanings, frequencies, or appropriateness conditions across dialects, historical periods, or specialized discourse communities.",
+    "users": [
+        {
+            "userName": "raginisingh09",
+            "codexVersion": "1.108.13184",
+            "updatedAt": 1779456891976
+        }
+    ]
+}

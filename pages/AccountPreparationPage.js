@@ -5,7 +5,7 @@ export class AccountPreparationPage {
     this.page = page;
     this.baseUrl = 'https://flyingflea.royalenfield.com/in/en/product/c6/';
 
-    this.profileIcon = page.locator('.header-profile').first();
+    this.profileIcon = page.getByAltText('Profile Icon').first();
     this.loginForm = page.locator('#loginForm');
     this.signupForm = page.locator('#signupForm');
     this.mobileInput = this.loginForm.getByRole('textbox', {
@@ -50,8 +50,16 @@ export class AccountPreparationPage {
 
     await this.mobileInput.fill(mobile);
     await this.consentControl.click({ position: { x: 5, y: 5 } });
-    await expect(this.consentCheckbox).toBeChecked();
-    await this.continueButton.click();
+
+      await expect(this.consentCheckbox).toBeChecked({
+        timeout: 10000
+      });
+
+      await expect(this.continueButton).toBeEnabled({
+        timeout: 10000
+      });
+
+      await this.continueButton.click();
 
     return this.detectAuthFlow();
   }

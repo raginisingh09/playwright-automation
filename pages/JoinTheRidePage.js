@@ -894,9 +894,9 @@ export class JoinTheRidePage {
     }
 
     console.log(
-      `${actionName} API statuses:`,
-      responsesToValidate.map(response => `${response.status()} ${response.url()}`)
-    );
+  `${actionName} API statuses:`,
+  responsesToValidate.map(response => response.status())
+);
   }
 
   async completeJoinTheRide(user, countryName) {

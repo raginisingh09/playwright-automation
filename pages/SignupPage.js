@@ -29,6 +29,9 @@ export class SignupPage {
     this.signupConsentCheckboxes = this.signupForm.locator(
       'input[type="checkbox"]'
     );
+    this.signupConsentControls = this.signupForm.locator(
+      '.auth-checkbox-custom'
+    );
     this.signupContinueButton = this.signupForm.getByRole('button', {
       name: /continue/i
     });
@@ -129,9 +132,31 @@ export class SignupPage {
 
     for (let index = 0; index < consentCount; index++) {
       const consentCheckbox = this.signupConsentCheckboxes.nth(index);
+      const consentControl = this.signupConsentControls.nth(index);
 
       if (!await consentCheckbox.isChecked()) {
-        await consentCheckbox.evaluate((checkbox) => checkbox.click());
+        if (await consentControl.isVisible().catch(() => false)) {
+          await consentControl.scrollIntoViewIfNeeded();
+
+          const box = await consentControl.boundingBox();
+          expect(
+            box,
+            `Signup consent checkbox ${index + 1} custom control was not visible.`
+          ).not.toBeNull();
+
+          await this.page.mouse.click(
+            box.x + box.width / 2,
+            box.y + box.height / 2
+          );
+        }
+      }
+
+      if (!await consentCheckbox.isChecked()) {
+        await consentCheckbox.evaluate((checkbox) => {
+          checkbox.click();
+          checkbox.dispatchEvent(new Event('input', { bubbles: true }));
+          checkbox.dispatchEvent(new Event('change', { bubbles: true }));
+        });
       }
 
       await expect(

@@ -267,15 +267,15 @@ export class LoginPage {
     try {
       await expect
         .poll(
-          () =>
-            verifyResponses
-              .map(response => response.status())
-              .find(status => status === 200 || status !== 204),
-          {
-            timeout: 30000
-          }
-        )
-        .not.toBeUndefined();
+        () =>
+        verifyResponses.some(
+        response => response.status() === 200
+        ),
+       {
+       timeout: 30000
+       }
+      )
+     .toBeTruthy();
     } finally {
       this.page.off('response', collectVerifyResponse);
     }

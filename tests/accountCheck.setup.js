@@ -1,7 +1,7 @@
 import { test } from '@playwright/test';
 
 import { AccountPreparationPage } from '../pages/AccountPreparationPage';
-import { SIGNUP_USER } from '../test-data/signupData';
+import { TEST_USER } from '../test-data/testUser';
 import {
   ensureSignupPreparationDirectory,
   signupPreparationPaths,
@@ -13,9 +13,9 @@ test.describe('Signup Account Check and Login', () => {
 
   test('check whether account exists and login when required', async ({ page }) => {
     test.skip(
-      !SIGNUP_USER.mobile,
-      'Set a dedicated signup test number in test-data/signupData.js.'
-    );
+    !TEST_USER.mobile,
+    'Set a dedicated test number in test-data/testUser.js.'
+);
 
     const accountPreparation = new AccountPreparationPage(page);
 
@@ -23,7 +23,7 @@ test.describe('Signup Account Check and Login', () => {
     await accountPreparation.openAuthentication();
 
     const authFlow = await accountPreparation.submitMobileNumber(
-      SIGNUP_USER.mobile
+      TEST_USER.mobile
     );
 
     if (authFlow === 'signup') {

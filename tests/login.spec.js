@@ -2,7 +2,7 @@ import { test } from '@playwright/test';
 
 import { LoginPage } from '../pages/LoginPage';
 
-import { USERS } from '../test-data/loginData';
+import { TEST_USER } from '../test-data/testUser';
 
 test.describe.configure({ mode: 'serial' });
 
@@ -22,8 +22,8 @@ test.describe('OTP Login Flow', () => {
 
     // Enter Mobile Number
     await loginPage.enterMobileNumber(
-      USERS.registeredUser.mobile
-    );
+    TEST_USER.mobile
+);
 
     // Accept Terms
     await loginPage.acceptTerms();

@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 import { DeleteAccountPage } from '../pages/DeleteAccountPage';
-import { SIGNUP_USER } from '../test-data/signupData';
+import { TEST_USER } from '../test-data/testUser';
 import {
   readSignupPreparationState,
   signupPreparationPaths,
@@ -27,7 +27,7 @@ test.describe('Signup Account Deletion', () => {
 
     try {
       await deleteAccountPage.navigateAsAuthenticatedUser();
-      await deleteAccountPage.deleteAccount(SIGNUP_USER.mobile);
+      await deleteAccountPage.deleteAccount(TEST_USER.mobile);
       await writeSignupPreparationState({
         accountExisted: true,
         accountDeleted: true
@@ -40,7 +40,7 @@ test.describe('Signup Account Deletion', () => {
 
     expect(
       finalState.accountDeleted,
-      `Account deletion failed for ${SIGNUP_USER.mobile}.`
+      `Account deletion failed for ${TEST_USER.mobile}.`
     ).toBe(true);
   });
 });
